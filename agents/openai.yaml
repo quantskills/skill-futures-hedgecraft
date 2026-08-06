@@ -1,0 +1,7 @@
+interface:
+  display_name: "期货对冲工坊"
+  short_description: "期货对冲、移仓与风控 sizing"
+  icon_small: "./assets/futures-hedgecraft.svg"
+  icon_large: "./assets/futures-hedgecraft.svg"
+  brand_color: "#991B1B"
+  default_prompt: "使用 $futures-hedgecraft 设计期货对冲或 CTA 风格流程，并纳入保证金、移仓和风控。"
