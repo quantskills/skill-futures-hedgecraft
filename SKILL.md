@@ -1,9 +1,28 @@
 ---
 name: futures-hedgecraft
 description: 当需要设计、审查或排错期货对冲、期货仓位 sizing、合约移仓、基差/carry 分析、日历价差、保证金压力测试或 CTA 风格期货配置时，使用此 skill。适用于股指期货、商品期货、利率期货和跨期价差场景，重点处理合约乘数、名义本金、保证金、期限结构、交割规则和压力损失。
+metadata:
+  organization: QuantSkills
+  organization_url: https://github.com/quantskills
+  repository: skill-futures-hedgecraft
+  repository_url: https://github.com/quantskills/skill-futures-hedgecraft
+  project_type: skill
+  collection: quantitative-research
+  project_status: community-project
+  review_status: unreviewed
+  license: GPL-3.0-only
+  category: quantitative-finance
 ---
 
 # 期货对冲工坊
+
+## 项目声明
+
+- 项目类型：Community Project / Skill；当前未声明为官方、认证或生产项目
+- 维护者：本仓库维护者及贡献者
+- 数据来源：由使用者提供或指定的期货价格、结算价、合约规格、乘数、保证金、交易日历和交割规则数据
+- 研究边界：仅用于期货研究与教育示例，不自动获取数据、不执行交易
+- 已知限制：结果依赖合约规则、流动性、保证金调整、基差、移仓窗口和压力情景；本技能不能替代交易所公告或经纪商风控规则
 
 ## 适用场景
 

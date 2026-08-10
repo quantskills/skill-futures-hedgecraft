@@ -21,6 +21,17 @@
 3. **资金层**：保证金、杠杆、压力损失和追加保证金路径
 4. **期限层**：基差、contango/backwardation、roll yield 和移仓窗口
 
+## 项目状态与研究边界
+
+| 项目项 | 说明 |
+| --- | --- |
+| 项目状态 | Community Project；尚未获得 QUANTSKILLS 的审核、认证或背书 |
+| 维护者 | 本仓库维护者及贡献者 |
+| 数据来源 | 使用者提供或指定的期货价格、结算价、合约规格、乘数、保证金、交易日历和交割规则数据 |
+| 核心假设 | 合约规格、保证金、流动性、基差和移仓窗口与实际交易环境一致 |
+| 已知限制 | 临时保证金调整、涨跌停、流动性衰减、基差跳变和交割规则会改变风险路径 |
+| 风险边界 | 仅用于研究与教育示例；不自动获取数据、不执行交易，结论需结合交易所公告与原始数据独立复核 |
+
 ## 核心逻辑
 
 ```text
@@ -47,7 +58,7 @@ trade_ok          = margin_safe + liquidity_ok + roll_plan_defined + stress_loss
 
 ```bash
 # 校验测试用例
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 
 # 查看期货研究手册
 sed -n '1,220p' references/playbook.md
@@ -87,7 +98,7 @@ sed -n '1,220p' references/playbook.md
 ## 目录结构
 
 ```text
-futures-hedgecraft/
+skill-futures-hedgecraft/
 ├── SKILL.md
 ├── README.md
 ├── README.en.md
@@ -99,9 +110,26 @@ futures-hedgecraft/
 ├── assets/
 │   └── futures-hedgecraft.svg
 ├── agents/
-│   └── openai.yaml
+│   ├── openai.yaml
+│   ├── claude-code.md
+│   ├── cursor-rule.mdc
+│   ├── portable-loader.md
+│   └── openclaw.md
+├── metadata.yaml
 └── LICENSE
 ```
+
+## 运行时入口
+
+| 运行时 | 入口 | 用法 |
+| --- | --- | --- |
+| Codex | `agents/openai.yaml` + `SKILL.md` | 通过技能名称触发 |
+| Claude Code | `agents/claude-code.md` | 读取入口后加载 `SKILL.md` |
+| Cursor | `agents/cursor-rule.mdc` | 将规则复制到项目 `.cursor/rules/` |
+| Hermes | `agents/portable-loader.md` | 按便携入口加载核心说明 |
+| OpenClaw | `agents/openclaw.md` | 按入口加载核心说明 |
+
+许可元数据见 `metadata.yaml`，SPDX 标识为 `GPL-3.0-only`。
 
 ## 核心约束
 
@@ -111,7 +139,7 @@ futures-hedgecraft/
 | 不只按预期收益 sizing | 仓位必须受保证金和压力损失约束 |
 | 不忽略移仓 | 所有期货头寸都必须说明 roll 或退出 |
 | 不混淆对冲和投机 | 对冲看风险覆盖，投机看风险预算 |
-| 只述不荐 | 输出研究结构，不构成投资建议 |
+| 只述不荐 | 输出研究结构、风险假设与可复核证据 |
 
 ## 测试用例
 
@@ -127,9 +155,9 @@ futures-hedgecraft/
 运行：
 
 ```bash
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 ```
 
 ## 免责声明
 
-本项目仅用于期货研究流程和风险设计，不构成任何投资建议，不保证对冲效果，不替代交易所规则、保证金通知和真实成交约束。
+本项目用于期货研究流程和风险设计。方案应结合交易所规则、保证金通知和真实成交约束独立复核。

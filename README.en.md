@@ -12,6 +12,17 @@
 
 Futures Hedgecraft is not a direction-calling tool. It translates a market view or hedge objective into contracts, margin usage, roll path, and stress scenarios.
 
+## Project Status and Boundaries
+
+| Item | Statement |
+| --- | --- |
+| Status | Community Project; not reviewed, certified, or endorsed by QUANTSKILLS |
+| Maintainers | Repository maintainers and contributors |
+| Data sources | User-provided or user-designated futures prices, settlement data, contract specifications, multipliers, margin, calendars, and delivery rules |
+| Assumptions | Contract terms, margin, liquidity, basis, and roll window match the actual trading environment |
+| Limitations | Margin changes, limit moves, liquidity decay, basis jumps, and delivery rules can change the risk path |
+| Risk boundary | Research and educational example only; it neither fetches data nor executes trades |
+
 ## Core Logic
 
 ```text
@@ -28,7 +39,7 @@ trade_ok          = margin_safe + liquidity_ok + roll_plan_defined + stress_loss
 ## Quick Start
 
 ```bash
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 sed -n '1,220p' references/playbook.md
 ```
 
@@ -50,9 +61,9 @@ sed -n '1,220p' references/playbook.md
 Run:
 
 ```bash
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 ```
 
 ## Disclaimer
 
-For futures research workflow design only. Not investment advice.
+For futures research workflow design. Validate all conclusions against exchange rules, margin notices, and execution constraints.
